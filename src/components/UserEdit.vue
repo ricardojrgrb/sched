@@ -60,7 +60,7 @@
                 event.preventDefault()
                 db.collection('users').doc(this.$route.params.id)
                 .update(this.user).then(() => {
-                    console.log("User successfully updated!");
+                    console.log("Alteração realizada!");
                     this.$router.push('/list')
                 }).catch((error) => {
                     console.log(error);
