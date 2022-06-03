@@ -14,7 +14,52 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in Users" :key="user.key">
+                    <tr v-for="user in Users" :key="user.key" v-show="user.barbeiro === 'Thiago'">
+                        <td>{{ user.nome }}</td>
+                        <td>{{ user.sobrenome }}</td>
+                        <td>{{ user.telefone }}</td>
+                        <td>{{ user.servico }}</td>
+                        <td>{{ user.barbeiro }}</td>
+                        <td>{{ user.data }}</td>
+                        <td>{{ user.hora }}</td>
+                        <td>
+                            <router-link :to="{name: 'edit', params: { id: user.key }}" class="btn btn-primary">Alterar
+                            </router-link>
+                            <button @click.prevent="deleteUser(user.key)" class="btn btn-danger">Deletar</button>
+                        </td>
+                    </tr>
+                    <hr/>
+                    <tr v-for="user in Users" :key="user.key" v-show="user.barbeiro === 'Douglas'">
+                        <td>{{ user.nome }}</td>
+                        <td>{{ user.sobrenome }}</td>
+                        <td>{{ user.telefone }}</td>
+                        <td>{{ user.servico }}</td>
+                        <td>{{ user.barbeiro }}</td>
+                        <td>{{ user.data }}</td>
+                        <td>{{ user.hora }}</td>
+                        <td>
+                            <router-link :to="{name: 'edit', params: { id: user.key }}" class="btn btn-primary">Alterar
+                            </router-link>
+                            <button @click.prevent="deleteUser(user.key)" class="btn btn-danger">Deletar</button>
+                        </td>
+                    </tr>
+                    <hr/>
+                    <tr v-for="user in Users" :key="user.key" v-show="user.barbeiro === 'André'">
+                        <td>{{ user.nome }}</td>
+                        <td>{{ user.sobrenome }}</td>
+                        <td>{{ user.telefone }}</td>
+                        <td>{{ user.servico }}</td>
+                        <td>{{ user.barbeiro }}</td>
+                        <td>{{ user.data }}</td>
+                        <td>{{ user.hora }}</td>
+                        <td>
+                            <router-link :to="{name: 'edit', params: { id: user.key }}" class="btn btn-primary">Alterar
+                            </router-link>
+                            <button @click.prevent="deleteUser(user.key)" class="btn btn-danger">Deletar</button>
+                        </td>
+                    </tr>
+                    <hr/>
+                    <tr v-for="user in Users" :key="user.key" v-show="user.barbeiro === 'Eduarda'">
                         <td>{{ user.nome }}</td>
                         <td>{{ user.sobrenome }}</td>
                         <td>{{ user.telefone }}</td>
@@ -61,9 +106,9 @@
         },
         methods: {
             deleteUser(id){
-              if (window.confirm("Do you really want to delete?")) {
+              if (window.confirm("Confirma remoção do cliente?")) {
                 db.collection("users").doc(id).delete().then(() => {
-                    console.log("Document deleted!");
+                    console.log("Cliente removido!");
                 })
                 .catch((error) => {
                     console.error(error);
